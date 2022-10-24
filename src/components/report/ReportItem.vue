@@ -1,6 +1,6 @@
 <template>
     <li>
-      <router-link :to="`/report-list/report/${report.Idx}`">
+      <router-link :to="`/report-list/report/${report.Idx}?nPage=${nPage}`">
           <div>
               <img :src="defaultImage" alt="">
           </div>
@@ -18,7 +18,8 @@ import defaultImage from '../../assets/images/default.png'
 export default {
   name: 'ReportItem',
   props: [
-    'report'
+    'report',
+    'nPage'
   ],
   data() {
     return {

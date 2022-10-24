@@ -10,8 +10,8 @@
         <section class="report_sub_sec02">
             <div class="gnb_sec_wrap">
                 <ul>
-                    <template v-for="reportItem in this.paginator.data">
-                        <ReportItem :key="reportItem.Idx" :report="reportItem" />
+                    <template v-for="reportItem in paginator.data">
+                        <ReportItem :key="reportItem.Idx" :report="reportItem" :n-page="paginator.nPage" />
                     </template>
                 </ul>
                 <Pager base-url="/report-list" :query="this.$route.query" :last-page="lastPage" :n-page="this.paginator.nPage" />

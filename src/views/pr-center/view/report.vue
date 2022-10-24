@@ -12,12 +12,14 @@
                 <ul>
                     <li class="board_title">
                         <h6>
-                            <span class="board_report">실적보고</span>나라비전, 웹메일 솔루션 '에어즈락 메일 조달청 나라비전나라비전나라비전나라비전'
+                            <span class="board_report">실적보고</span>
+                            <span v-html="report.Title ? report.Title.replaceAll('[레퍼런스]', '') : report.Title" />
                         </h6>
-                        <p>2018-08-21</p>
+                        <p>{{ report.Created ? report.Created.substring(0, report.Created.indexOf(' ')) : report.Created }}</p>
                     </li>
                     <li class="board_txt">
-                        내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
+                        <img v-if="showImage" :src="mainImage" @error="showImage" alt="" />
+                        <div v-html="report.Content" />
                     </li>
                 </ul>
                 <div class="board_pager">
@@ -34,7 +36,44 @@
 
 <script>
 export default {
-  name: 'ReportView'
+  name: 'ReportView',
+  data () {
+    return {
+        report: {},
+        showImage: true
+    }
+  },
+  computed: {
+    mainImage() {
+        if(this.report.Idx) {
+            return this.api + '/image/' + this.report.Idx
+        } else {
+            return null
+        }
+    },
+    idx () {
+        return this.$route.params.idx
+    },
+    nPage () {
+        return this.$route.query.nPage
+    }
+  },
+  beforeMount() {
+    this.getReport()
+  },
+  methods: {
+    async getReport () {
+        const url = `/view/R/${this.idx}`
+        const params = {
+            nPage: this.nPage
+        }
+        await this.$axios.get(url, {params: params}).then(res => {
+            if(res && res.data) {
+                this.report = res.data.data
+            }
+        })
+    }
+  }
 }
 </script>
 

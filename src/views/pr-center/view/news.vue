@@ -25,7 +25,7 @@
           </ul>
           <div class="board_pager">
               <div>
-                  <router-link :to="">이전</router-link>
+                  <a href="javascript:void(0);">이전</a>
                   <a href="javascript:void(0);">다음</a>
               </div>
               <router-link :to="`/news-list/${this.nPage}`">목록</router-link>
