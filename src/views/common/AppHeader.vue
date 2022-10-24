@@ -143,7 +143,7 @@ export default {
               {
                 title: '실적보고',
                 name: 'report-list',
-                path: '/report-list'
+                path: '/report-list/1'
               }
             ]
           },

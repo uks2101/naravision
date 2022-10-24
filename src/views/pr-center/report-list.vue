@@ -14,7 +14,7 @@
                         <ReportItem :key="reportItem.Idx" :report="reportItem" />
                     </template>
                 </ul>
-                <Pager base-url="/report-list" :query="this.$route.query" :last-page="lastPage" :n-page="this.paginator.nPage"></Pager>
+                <Pager base-url="/report-list" :query="this.$route.query" :last-page="lastPage" :n-page="this.paginator.nPage" />
             </div>
         </section>
   </div>
@@ -59,7 +59,7 @@ export default {
     },
     methods: {
         async getPaginator() {
-            const url = '/list/AN'
+            const url = '/list/R'
             const params = {
                 nPage: this.paginator.nPage,
                 listNum: this.listNum,

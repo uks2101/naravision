@@ -10,11 +10,11 @@
 <section class="news_sub_sec02">
     <div class="gnb_sec_wrap">
         <ul>
-            <template v-for="newsItem in this.paginator.data">
-                <NewsItem :key="newsItem.Idx" :news="newsItem" />
+            <template v-for="newsItem in paginator.data">
+                <NewsItem :key="newsItem.Idx" :news="newsItem" :n-page="paginator.nPage" />
             </template>
         </ul>
-      <Pager base-url="/news-list" :query="this.$route.query" :last-page="lastPage" :n-page="this.paginator.nPage" />
+      <Pager base-url="/news-list" :query="$route.query" :last-page="lastPage" :n-page="paginator.nPage" />
     </div>
 </section>
 </div>

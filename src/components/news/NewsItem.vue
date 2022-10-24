@@ -1,6 +1,6 @@
 <template>
   <li>
-    <router-link :to="`/news-list/news/${news.Idx}`">
+    <router-link :to="`/news-list/news/${news.Idx}?nPage=${nPage}`">
       <div>
         <img :src="defaultImage" @error="getDefaultImage" alt="">
       </div>
@@ -22,7 +22,8 @@ import defaultImage from '../../assets/images/default.png'
 export default {
   name: 'NewsItem',
   props: [
-      'news'
+      'news',
+      'nPage'
   ],
   data () {
     return {

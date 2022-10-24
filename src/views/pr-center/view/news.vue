@@ -17,10 +17,11 @@
                     <span v-else class="board_news">보도자료</span>
                     {{ news.Title ? news.Title.replaceAll('[언론기사]', '').replaceAll('[공지사항]', '') : news.Title }}
                   </h6>
-                  <p>2018-08-21</p>
+                  <p>{{ news.Created ? news.Created.substring(0, news.Created.indexOf(' ')) : news.Created }}</p>
               </li>
               <li class="board_txt">
-                    {{ getContent() }}
+                  <img v-if="showImage" :src="mainImage" @error="showImage = false" alt=""/>
+                  <div v-html="news.Content" />
               </li>
           </ul>
           <div class="board_pager">
@@ -38,19 +39,50 @@
 <script>
 export default {
   name: 'NewsView',
+  data () {
+    return {
+      news: {},
+      showImage: true,
+    }
+  },
   computed: {
     isNotice() {
         const title = this.news.Title
-        if(title.indexOf('[공지사항]') == 0) {
+        if(title && title.indexOf('[공지사항]') == 0) {
             return true
         } else {
             return false
         }
+    },
+    mainImage () {
+      if (this.news.Idx) {
+        // eslint-disable-next-line no-debugger
+        return this.api + '/image/' + this.news.Idx
+      } else {
+        return null
+      }
+    },
+    idx () {
+      return this.$route.params.idx
+    },
+    nPage () {
+      return this.$route.query.nPage
     }
   },
+  beforeMount() {
+    this.getNews()
+  },
   methods: {
-    getContent() {
-        return this.news.Content.replace(/<[^>]*>?/g, '')
+    async getNews () {
+      const url = `/view/AN/${this.idx}`
+      const params = {
+        nPage: this.nPage
+      }
+      await this.$axios.get(url, { params: params }).then(res => {
+        if (res && res.data) {
+          this.news = res.data.data
+        }
+      })
     }
   }
 }
