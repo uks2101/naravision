@@ -2,7 +2,7 @@
     <li>
       <router-link :to="`/report-list/report/${report.Idx}?nPage=${nPage}`">
           <div>
-              <img :src="defaultImage" alt="">
+              <img :src="defaultImage" @error = "getDefaultImage" alt="">
           </div>
           <div>
               <h6>{{ report.Title ? report.Title.replaceAll('[레퍼런스]', '') : report.Title }}</h6>

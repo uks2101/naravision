@@ -175,7 +175,7 @@
                 <div class="sec06_01">
                     <div>
                         <h4>News</h4>
-                        <router-link to="/news-list"><img src="../assets/images/sec06_plus.png" alt="소식 더보기"></router-link>
+                        <router-link to="/news-list/1"><img src="../assets/images/sec06_plus.png" alt="소식 더보기"></router-link>
                     </div>
                     <carousel class="slider_rel" :autoplay="false" :loop="false" :autoWidth="false" :autoHeight="false" :nav="true" :center="false" :items="1" :dots="false" :navText="['','']" :rewind="false">
                         <a href="board_news.html">
@@ -195,7 +195,7 @@
                 <div class="sec06_02">
                     <div>
                         <h4>Notice</h4>
-                        <router-link to="/news-list"><img src="../assets/images/sec06_plus.png" alt="공지 더보기"></router-link>
+                        <router-link to="/news-list/1"><img src="../assets/images/sec06_plus.png" alt="공지 더보기"></router-link>
                     </div>
                     <div>
                         <a href="board_news.html">

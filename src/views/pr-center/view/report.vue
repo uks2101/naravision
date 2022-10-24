@@ -18,7 +18,7 @@
                         <p>{{ report.Created ? report.Created.substring(0, report.Created.indexOf(' ')) : report.Created }}</p>
                     </li>
                     <li class="board_txt">
-                        <img v-if="showImage" :src="mainImage" @error="showImage" alt="" />
+                        <img v-if="showImage" :src="mainImage" @error="showImage = false" alt="" />
                         <div v-html="report.Content" />
                     </li>
                 </ul>
