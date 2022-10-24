@@ -1,5 +1,5 @@
 <template>
-  <div class="news_pager">
+  <div class="pager">
     <router-link
         :to="hasPrev ? { path: baseUrl + '/1', query: query } : {}"
     >

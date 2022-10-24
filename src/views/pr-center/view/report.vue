@@ -25,7 +25,7 @@
                         <a href="javascript:void(0);">이전</a>
                         <a href="javascript:void(0);">다음</a>
                     </div>
-                    <router-link to="/report-list">목록</router-link>
+                    <router-link :to="`/report-list/${this.nPage}`">목록</router-link>
                 </div>
             </div>
         </section>

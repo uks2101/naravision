@@ -12,10 +12,9 @@
           <ul>
               <li class="board_title">
                   <h6>
-                    <!-- <span class="board_notify">공지</span>나라비전, 웹메일 솔루션 '에어즈락 메일 조달청 나라비전나라비전나라비전나라비전' -->
                     <span v-if="isNotice" class="board_notify">공지</span>
                     <span v-else class="board_news">보도자료</span>
-                    {{ news.Title ? news.Title.replaceAll('[언론기사]', '').replaceAll('[공지사항]', '') : news.Title }}
+                    <span v-html="news.Title ? news.Title.replaceAll('[언론기사]', '').replaceAll('[공지사항]', '') : news.Title" />
                   </h6>
                   <p>{{ news.Created ? news.Created.substring(0, news.Created.indexOf(' ')) : news.Created }}</p>
               </li>
@@ -26,10 +25,10 @@
           </ul>
           <div class="board_pager">
               <div>
-                  <a href="javascript:void(0);">이전</a>
+                  <router-link :to="">이전</router-link>
                   <a href="javascript:void(0);">다음</a>
               </div>
-              <router-link to="/news-list">목록</router-link>
+              <router-link :to="`/news-list/${this.nPage}`">목록</router-link>
           </div>
       </div>
   </section>

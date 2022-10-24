@@ -987,10 +987,10 @@ footer > .footer_lower > p {color: #adadad; font-size: 12px; padding: 25px 0 10p
 .news_sub_sec02 > .gnb_sec_wrap > ul > li > a > div:nth-child(2) > h6 > span.board_news {display: inline-block; padding: 0 5px; background-color: #849baa; color: #fff; margin-right: 5px; font-size: 12px;}
 .news_sub_sec02 > .gnb_sec_wrap > ul > li > a > div:nth-child(2) > p:first-of-type {font-size: 12px; color: #747474; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; font-weight: 300; line-height: 1.4; padding: 2px 0;}
 .news_sub_sec02 > .gnb_sec_wrap > ul > li > a > div:nth-child(2) > p:last-of-type {font-size: 12px; color: #747474; font-weight: 300; line-height: 1.4;}
-.news_sub_sec02 > .gnb_sec_wrap > .news_pager {font-size: 14px; color: #333; font-weight: 300; display: flex; flex-wrap: nowrap; justify-content: center; align-items: center; padding-top: 30px;}
-.news_sub_sec02 > .gnb_sec_wrap > .news_pager > a {display: inline-block; border: 1px solid #cdcdcd; text-align: center; padding: 5px; margin: 0 2.5px; width: 20px; height: 20px; line-height: 18px;}
-.news_sub_sec02 > .gnb_sec_wrap > .news_pager > a.on {border: 1px solid #373737; background-color: #373737; color: #fff;}
-.news_sub_sec02 > .gnb_sec_wrap > .news_pager > a > img {height: 70%; display: inline-block;}
+.news_sub_sec02 > .gnb_sec_wrap > .pager {font-size: 14px; color: #333; font-weight: 300; display: flex; flex-wrap: nowrap; justify-content: center; align-items: center; padding-top: 30px;}
+.news_sub_sec02 > .gnb_sec_wrap > .pager > a {display: inline-block; border: 1px solid #cdcdcd; text-align: center; padding: 5px; margin: 0 2.5px; width: 20px; height: 20px; line-height: 18px;}
+.news_sub_sec02 > .gnb_sec_wrap > .pager > a.on {border: 1px solid #373737; background-color: #373737; color: #fff;}
+.news_sub_sec02 > .gnb_sec_wrap > .pager > a > img {height: 70%; display: inline-block;}
 
 
 /*////////////////////////////////////////////////////////////////////////////////*/
@@ -1008,10 +1008,10 @@ footer > .footer_lower > p {color: #adadad; font-size: 12px; padding: 25px 0 10p
 .report_sub_sec02 > .gnb_sec_wrap > ul > li > a > div:nth-child(2) > h6 > span.board_news {display: inline-block; padding: 0 5px; background-color: #849baa; color: #fff; margin-right: 5px; font-size: 12px;}
 .report_sub_sec02 > .gnb_sec_wrap > ul > li > a > div:nth-child(2) > p:first-of-type {font-size: 12px; color: #747474; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; font-weight: 300; line-height: 1.4; padding: 2px 0;}
 .report_sub_sec02 > .gnb_sec_wrap > ul > li > a > div:nth-child(2) > p:last-of-type {font-size: 12px; color: #747474; font-weight: 300; line-height: 1.4;}
-.report_sub_sec02 > .gnb_sec_wrap > .report_pager {font-size: 14px; color: #333; font-weight: 300; display: flex; flex-wrap: nowrap; justify-content: center; align-items: center; padding-top: 30px;}
-.report_sub_sec02 > .gnb_sec_wrap > .report_pager > a {display: inline-block; border: 1px solid #cdcdcd; text-align: center; padding: 5px; margin: 0 2.5px; width: 20px; height: 20px; line-height: 18px;}
-.report_sub_sec02 > .gnb_sec_wrap > .report_pager > a.on {border: 1px solid #373737; background-color: #373737; color: #fff;}
-.report_sub_sec02 > .gnb_sec_wrap > .report_pager > a > img {height: 70%; display: inline-block;}
+.report_sub_sec02 > .gnb_sec_wrap > .pager {font-size: 14px; color: #333; font-weight: 300; display: flex; flex-wrap: nowrap; justify-content: center; align-items: center; padding-top: 30px;}
+.report_sub_sec02 > .gnb_sec_wrap > .pager > a {display: inline-block; border: 1px solid #cdcdcd; text-align: center; padding: 5px; margin: 0 2.5px; width: 20px; height: 20px; line-height: 18px;}
+.report_sub_sec02 > .gnb_sec_wrap > .pager > a.on {border: 1px solid #373737; background-color: #373737; color: #fff;}
+.report_sub_sec02 > .gnb_sec_wrap > .pager > a > img {height: 70%; display: inline-block;}
 
 
 /*////////////////////////////////////////////////////////////////////////////////*/
@@ -1356,7 +1356,7 @@ footer > .footer_lower > p {color: #adadad; font-size: 12px; padding: 25px 0 10p
 .board_news_sub_sec02 > .gnb_sec_wrap > ul > li.board_title > h6 > span.board_news {display: inline-block; padding: 0 5px; background-color: #849baa; color: #fff; margin-right: 5px; font-size: 12px;}
 .board_news_sub_sec02 > .gnb_sec_wrap > ul > li.board_title > p {font-size: 12px; color: #747474; padding-top: 6px;}
 .board_news_sub_sec02 > .gnb_sec_wrap > ul > li.board_txt {padding: 20px 10px; font-size: 14px; line-height: 1.4; color: #333; border-bottom: 1px solid #b2b2b2;}
-.board_news_sub_sec02 > .gnb_sec_wrap > ul > li.board_txt img {width: 100%;}
+.board_news_sub_sec02 > .gnb_sec_wrap > ul > li.board_txt img {width: 100%; margin-bottom: 20px;}
 
 .board_news_sub_sec02 > .gnb_sec_wrap > .board_pager {font-size: 14px; color: #333; font-weight: 300; display: flex; flex-wrap: nowrap; justify-content: space-between; align-items: center; padding-top: 10px;}
 .board_news_sub_sec02 > .gnb_sec_wrap > .board_pager > div {display: inline-block;}
@@ -1376,7 +1376,7 @@ footer > .footer_lower > p {color: #adadad; font-size: 12px; padding: 25px 0 10p
 .board_report_sub_sec02 > .gnb_sec_wrap > ul > li.board_title > h6 > span.board_report {display: inline-block; padding: 0 5px; background-color: #333333; color: #fff; margin-right: 5px; font-size: 12px;}
 .board_report_sub_sec02 > .gnb_sec_wrap > ul > li.board_title > p {font-size: 12px; color: #747474; padding-top: 6px;}
 .board_report_sub_sec02 > .gnb_sec_wrap > ul > li.board_txt {padding: 20px 10px; font-size: 14px; line-height: 1.4; color: #333; border-bottom: 1px solid #b2b2b2;}
-.board_report_sub_sec02 > .gnb_sec_wrap > ul > li.board_txt img {width: 100%;}
+.board_report_sub_sec02 > .gnb_sec_wrap > ul > li.board_txt img {width: 100%; margin-bottom: 20px;}
 
 .board_report_sub_sec02 > .gnb_sec_wrap > .board_pager {font-size: 14px; color: #333; font-weight: 300; display: flex; flex-wrap: nowrap; justify-content: space-between; align-items: center; padding-top: 10px;}
 .board_report_sub_sec02 > .gnb_sec_wrap > .board_pager > div {display: inline-block;}

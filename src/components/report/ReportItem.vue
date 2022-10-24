@@ -5,8 +5,8 @@
               <img :src="defaultImage" alt="">
           </div>
           <div>
-              <h6>{{ report.Title }}</h6>
-              <p>{{ getContent() }}</p>
+              <h6>{{ report.Title ? report.Title.replaceAll('[레퍼런스]', '') : report.Title }}</h6>
+              <p v-html="getContent()" />
               <p>{{ report.Created && report.Created.length >= 10 ? report.Created.substring(0, 10) : report.Created}}</p>
           </div>
         </router-link>

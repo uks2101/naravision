@@ -8,9 +8,9 @@
         <h6>
           <span v-if="isNotice" class="board_notify">공지</span>
           <span v-else class="board_news">보도자료</span>
-          {{ news.Title ? news.Title.replaceAll('[언론기사]', '').replaceAll('[공지사항]', '') : news.Title }}
+          <span v-html="news.Title ? news.Title.replaceAll('[언론기사]', '').replaceAll('[공지사항]', '') : news.Title" />
         </h6>
-        <p>{{ getContent() }}</p>
+        <p v-html="getContent()" />
         <p>{{ news.Created && news.Created.length >= 10 ? news.Created.substring(0, 10) : news.Created }}</p>
       </div>
     </router-link>
