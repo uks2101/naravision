@@ -1,0 +1,41 @@
+<template>
+    <li>
+      <router-link :to="`/report-list/report/${report.Idx}`">
+          <div>
+              <img :src="defaultImage" alt="">
+          </div>
+          <div>
+              <h6>{{ report.Title }}</h6>
+              <p>{{ getContent() }}</p>
+              <p>{{ report.Created && report.Created.length >= 10 ? report.Created.substring(0, 10) : report.Created}}</p>
+          </div>
+        </router-link>
+    </li> 
+</template>
+
+<script>
+import defaultImage from '../../assets/images/default.png'
+export default {
+  name: 'ReportItem',
+  props: [
+    'report'
+  ],
+  data() {
+    return {
+      defaultImage: this.api + '/image/' + this.report.Idx
+    }
+  },
+  methods: {
+    getContent () {
+      return this.report.Content.replace(/<[^>]*>?/g, '')
+    },
+    getDefaultImage (e) {
+      e.target.src = defaultImage
+    }
+  }
+}
+</script>
+
+<style>
+
+</style>
