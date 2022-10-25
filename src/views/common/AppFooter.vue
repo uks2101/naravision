@@ -34,8 +34,8 @@
                 <dl>
                     <dt>PR센터</dt>
                     <dd>
-                        <router-link to="/news-list">뉴스 및 공지</router-link>
-                        <router-link to="/report-list">실적보고</router-link>
+                        <router-link to="/news-list/1">뉴스 및 공지</router-link>
+                        <router-link to="/report-list/1">실적보고</router-link>
                     </dd>
                 </dl>
                 <dl>
