@@ -102,28 +102,7 @@
                 <h1>Project Reports</h1>
                 <p>나라비전만의 차별화된 프로젝트<br>수행능력을 직접 확인하세요.</p>
                 <div>
-                    <a href="board_report.html">
-                        <div><img src="../assets/images/sec04_logo1.png" alt=""></div>
-                        <div>
-                            <h6>사회보장정보원 에어즈락메일 구축</h6>
-                            <p>사회보장정보원에서 (주)나라비전의 기업용 웹메일 솔루션인 에어즈락메일을 구축하게 되었습니다. 사회보장정보원에서 (주)나라비전의 기업용 웹메일 솔루션인 에어즈락메일을 구축하게 되었습니다.</p>
-                        </div>
-                        <div>
-                            <span>2017.07.21</span>
-                            <img src="../assets/images/sec04_arrow.png" alt="자세히 보기">
-                        </div>
-                    </a>
-                    <a href="board_report.html">
-                        <div><img src="../assets/images/sec04_logo2.png" alt=""></div>
-                        <div>
-                            <h6>한국인삼공사 에어즈락메일 구축</h6>
-                            <p>한국인삼공사에서 (주)나라비전의 기업전용 웹메일 솔루션인 에어즈락메일을 구축하게 되었습니다. 한국인삼공사에서 (주)나라비전의 기업전용 웹메일 솔루션인 에어즈락메일을 구축하게 되었습니다.</p>
-                        </div>
-                        <div>
-                            <span>2017.07.21</span>
-                            <img src="../assets/images/sec04_arrow.png" alt="자세히 보기">
-                        </div>
-                    </a>
+                    <ReportMainItem :report="reportItem" :key="reportItem.Idx" v-for="reportItem in paginatorReport.data"/>
                 </div>
             </div>
         </section>
@@ -178,7 +157,7 @@
                         <router-link to="/news-list/1"><img src="../assets/images/sec06_plus.png" alt="소식 더보기"></router-link>
                     </div>
                     <carousel class="slider_rel" :autoplay="false" :loop="false" :autoWidth="false" :autoHeight="false" :nav="true" :center="false" :items="1" :dots="false" :navText="['','']" :rewind="false">
-                        <NewsMainItem :news="newsItem" :key="newsItem.Idx" v-for="newsItem in paginator.data"/>
+                        <NewsMainItem :news="newsItem" :key="newsItem.Idx" v-for="newsItem in paginatorNews.data"/>
                     </carousel>
                 </div>
                 <div class="sec06_02">
@@ -187,22 +166,7 @@
                         <router-link to="/news-list/1"><img src="../assets/images/sec06_plus.png" alt="공지 더보기"></router-link>
                     </div>
                     <div>
-                        <a href="board_news.html">
-                            <p>나라비전의 특별한 휴일휴일휴일휴일휴일</p>
-                            <span>2017.05</span>
-                        </a>
-                        <a href="board_news.html">
-                            <p>나라비전의 특별한 휴일휴일휴일</p>
-                            <span>2017.05</span>
-                        </a>
-                        <a href="board_news.html">
-                            <p>나라비전의 특별한 휴일휴일휴일</p>
-                            <span>2017.05</span>
-                        </a>
-                        <a href="board_news.html">
-                            <p>나라비전의 특별한 휴일휴일휴일</p>
-                            <span>2017.05</span>
-                        </a>
+                        <NoticeMainItem :news="newsItem" :key="newsItem.Idx" v-for="newsItem in paginatorNotice.data" />
                     </div>
                 </div>
             </div>
@@ -212,36 +176,72 @@
 
 <script>
 import carousel from 'vue-owl-carousel'
+import ReportMainItem from '@/components/report/ReportMainItem'
 import NewsMainItem from '@/components/news/NewsMainItem'
+import NoticeMainItem from '@/components/news/NoticeMainItem'
 
 export default {
     name: 'MainView',
     components: {
         carousel,
+        ReportMainItem,
         NewsMainItem,
+        NoticeMainItem
     },
     data () {
         return {
-            paginator : {
+            paginatorReport: {
                 data: [],
+                listNum: 2
             },
-            listNum: 3
+            paginatorNews: {
+                data: [],
+                listNum: 5
+            },
+            paginatorNotice: {
+                data: [],
+                listNum: 5
+            }
         }
     },
     beforeMount () {
-        this.getPaginator()
+        this.getPaginatorReport()
+        this.getPaginatorNews()
+        this.getPaginatorNotice()
     },
     methods: {
-        async getPaginator () {
-        const url = '/list/AN'
-        const params = {
-            listNum: this.listNum,
-        }
-        await this.$axios.get(url, { params: params }).then(res => {
-            if (res && res.data) {
-            this.paginator = res.data
+        async getPaginatorReport () {
+            const url = '/list/R'
+            const params = {
+                listNum: this.paginatorReport.listNum,
             }
-        })
+            await this.$axios.get(url, { params: params }).then(res => {
+                if (res && res.data) {
+                this.paginatorReport = res.data
+                }
+            })
+        },
+        async getPaginatorNews () {
+            const url = '/list/A'
+            const params = {
+                listNum: this.paginatorNews.listNum,
+            }
+            await this.$axios.get(url, { params: params }).then(res => {
+                if (res && res.data) {
+                this.paginatorNews = res.data
+                }
+            })
+        },
+        async getPaginatorNotice () {
+            const url = '/list/N'
+            const params = {
+                listNum: this.paginatorNotice.listNum,
+            }
+            await this.$axios.get(url, { params: params }).then(res => {
+                if (res && res.data) {
+                this.paginatorNotice = res.data
+                }
+            })
         }
     }
 }

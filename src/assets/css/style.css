@@ -142,7 +142,7 @@ header > .header_wrap > a:last-child img {display: block; width: 100%;}
 .sec05 > .sec_wrap > h1::after {content: ''; display: block; width: 60px; height: 2px; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); background-color: #3177fb;}
 .sec05 > .sec_wrap > p {padding: 16px 0 25px; font-size: 14px; font-weight: 300; line-height: 1.3; text-align: center; color: #63666b;}
 .sec05 > .sec_wrap .slider_ref {width: 100%; max-width: 500px; margin: auto;}
-.sec05 > .sec_wrap .slider_ref .owl-carousel .owl-item img {width: 71%; display: inline-block; border: 1px solid #c9c9c9 !important; box-sizing: border-box;}
+.sec05 > .sec_wrap .slider_ref .owl-carousel .owl-item img {width: 70%; display: inline-block; border: 1px solid #c9c9c9 !important; box-sizing: border-box;}
 .sec05 > .sec_wrap .slider_ref .owl-carousel .owl-item img:nth-child(2) {margin: 10px 0;}
 .sec05 .owl-carousel .owl-stage-outer {width: 71% !important; margin: auto !important; height: auto !important;}
 .sec05 .owl-theme .owl-nav {width: 100%; position: absolute; top: 50%; transform: translateY(-50%); display: flex; justify-content: space-between; margin-top: 0; z-index: -1;}
@@ -167,7 +167,7 @@ header > .header_wrap > a:last-child img {display: block; width: 100%;}
 
 .sec06 >.sec_wrap .slider_rel a {display: inline-block; width: 100%;}
 .sec06 >.sec_wrap .slider_rel a img {display: inline-block; width: 100%; border: 1px solid #dadada; box-sizing: border-box;}
-.sec06 >.sec_wrap .slider_rel a h6 {font-size: 20px; font-weight: 500; padding-top: 25px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; word-break: keep-all; line-height: 1.4;}
+.sec06 >.sec_wrap .slider_rel a h6 {font-size: 20px; font-weight: 500; padding-top: 25px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; word-break: keep-all; line-height: 1.4;}
 .sec06 >.sec_wrap .slider_rel a p {font-size: 14px; line-height: 1.5; color: #6f6f6f; overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; padding-top: 15px;}
 .sec06 >.sec_wrap .slider_rel a span {font-size: 14px; color: #9b9b9c; padding-top: 15px; display: inline-block;}
 .sec06 .owl-theme .owl-nav {transform: translate(-50%, -50%); top: 50%; left: 50%; width: calc(100% + 100px); position: absolute; display: flex; justify-content: space-between; margin-top: 0; z-index: -1;}
