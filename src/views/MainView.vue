@@ -178,18 +178,7 @@
                         <router-link to="/news-list/1"><img src="../assets/images/sec06_plus.png" alt="소식 더보기"></router-link>
                     </div>
                     <carousel class="slider_rel" :autoplay="false" :loop="false" :autoWidth="false" :autoHeight="false" :nav="true" :center="false" :items="1" :dots="false" :navText="['','']" :rewind="false">
-                        <a href="board_news.html">
-                            <img src="../assets/images/sec06_img.png" alt="">
-                            <h6>나라비전, 한국인삼공사 웹메일 시스템 구축 사업에 '에어즈락 에어즈락 에어즈락'</h6>
-                            <p>웹메일 솔루션 전문기업 나라비전(대표 한이식)이 한국인삼공사의 '웹메일 시스템 구축 사업'에 주요 사업자로 선정됐다고 30일 밝혔다.</p>
-                            <span>2017.07.06</span>
-                        </a>
-                        <a href="board_news.html">
-                            <img src="../assets/images/sec06_img.png" alt="">
-                            <h6>나라비전, 한국인삼공사 웹메일 시스템 구축 사업에 '에어즈락 에어즈락 에어즈락'</h6>
-                            <p>웹메일 솔루션 전문기업 나라비전(대표 한이식)이 한국인삼공사의 '웹메일 시스템 구축 사업'에 주요 사업자로 선정됐다고 30일 밝혔다.</p>
-                            <span>2017.07.06</span>
-                        </a>
+                        <NewsMainItem :news="newsItem" :key="newsItem.Idx" v-for="newsItem in paginator.data"/>
                     </carousel>
                 </div>
                 <div class="sec06_02">
@@ -223,11 +212,37 @@
 
 <script>
 import carousel from 'vue-owl-carousel'
+import NewsMainItem from '@/components/news/NewsMainItem'
 
 export default {
     name: 'MainView',
     components: {
         carousel,
+        NewsMainItem,
+    },
+    data () {
+        return {
+            paginator : {
+                data: [],
+            },
+            listNum: 3
+        }
+    },
+    beforeMount () {
+        this.getPaginator()
+    },
+    methods: {
+        async getPaginator () {
+        const url = '/list/AN'
+        const params = {
+            listNum: this.listNum,
+        }
+        await this.$axios.get(url, { params: params }).then(res => {
+            if (res && res.data) {
+            this.paginator = res.data
+            }
+        })
+        }
     }
 }
 </script>
