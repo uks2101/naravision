@@ -1,10 +1,12 @@
 <template>
-  <router-link :to="`/news-list/news/${news.Idx}?nPage=${nPage}`" >
-      <img :src="defaultImage" @error="getDefaultImage" alt="">
-      <h6 v-html="news.Title ? news.Title.replaceAll('[언론기사]', '').replaceAll('[공지사항]', '') : news.Title" />
-      <p v-html="getContent()" />
-      <span>{{ news.Created && news.Created.length >= 10 ? news.Created.substring(0, 10) : news.Created }}</span>
-  </router-link>
+  <div>
+    <router-link :to="`/news-list/news/${news.Idx}?nPage=${nPage}`" >
+        <img :src="defaultImage" @error="getDefaultImage" alt="">
+        <h6 v-html="news.Title ? news.Title.replaceAll('[언론기사]', '').replaceAll('[공지사항]', '') : news.Title" />
+        <p v-html="getContent()" />
+        <span>{{ news.Created && news.Created.length >= 10 ? news.Created.substring(0, 10) : news.Created }}</span>
+    </router-link>
+  </div>
 </template>
 
 <script>

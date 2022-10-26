@@ -39,7 +39,7 @@
                       <li
                           v-for="(subMenu, j) in menu.subMenus"
                           :key="'sub-menu-' + i + '-' + j"
-                          :class="{ 'onn': $route.path === subMenu.path }"
+                          :class="{ 'onn': $route.path === subMenu.path || $route.path.indexOf(subMenu.name) >= 0 }"
                       >
                         <router-link :to="subMenu.path" class="sub-menu" :style="{ color: subMenu.color }">
                           {{ subMenu.title }}
@@ -184,7 +184,10 @@ export default {
               }
             ]
           }
-        ]
+        ],
+        lastScrollTop: 0,
+        delta: 5,
+        fixBoxHeight: 0
       }
   },
   computed: {
@@ -195,42 +198,40 @@ export default {
   },
   methods: {
     headerBehavior () {
-      let lastScrollTop = 0;
-      let delta = 5;
+      const self = this
       let fixBox = document.querySelector('header');
-      let fixBoxHeight = fixBox.offsetHeight;
+      this.fixBoxHeight = fixBox.offsetHeight;
       let didScroll;
       window.onscroll = function() {
         didScroll = true;
       };
       setInterval(function(){
         if(didScroll){
-          hasScrolled();
+          self.hasScrolled(fixBox);
           didScroll = false;
         }
       }, 100);
-
-      function hasScrolled(){
-        let nowScrollTop = window.scrollY;
-        if(Math.abs(lastScrollTop - nowScrollTop) <= delta){
-          return;
-        }
-        if(nowScrollTop > lastScrollTop && nowScrollTop > fixBoxHeight){
-          //Scroll down
-          fixBox.classList.add('show');
-        }else{
-          if(nowScrollTop + window.innerHeight < document.body.offsetHeight){
-            //Scroll up
-            fixBox.classList.remove('show');
-          }
-        }
-        lastScrollTop = nowScrollTop;
+    },
+    hasScrolled (fixBox) {
+      let nowScrollTop = window.scrollY;
+      if(Math.abs(this.lastScrollTop - nowScrollTop) <= this.delta){
+        return;
       }
+      if(nowScrollTop > this.lastScrollTop && nowScrollTop > this.fixBoxHeight){
+        //Scroll down
+        fixBox.classList.add('show');
+      }else{
+        if(nowScrollTop + window.innerHeight < document.body.offsetHeight){
+          //Scroll up
+          fixBox.classList.remove('show');
+        }
+      }
+      this.lastScrollTop = nowScrollTop;
     },
     isActive (menu) {
       let active = false
       if (menu.name === 'home') {
-        active = this.drawer.menus.home
+        active = this.drawer.menus.home || this.$route.path === '/'
       } else if (menu.name === 'solution') {
         active = this.drawer.menus.solution
       } else if (menu.name === 'clouds') {
@@ -249,7 +250,9 @@ export default {
       if (!active) {
         if (subMenus && subMenus.length > 0) {
           for (const subMenu of subMenus) {
-            if (path === subMenu.path) {
+            console.log('main ' + menu.path)
+            console.log('sub ' + subMenu.path)
+            if (path === subMenu.path || path.indexOf(subMenu.name) >= 0) {
               active = true
               break
             }

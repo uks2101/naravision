@@ -156,8 +156,8 @@
                         <h4>News</h4>
                         <router-link to="/news-list/1"><img src="../assets/images/sec06_plus.png" alt="소식 더보기"></router-link>
                     </div>
-                    <carousel class="slider_rel" :autoplay="false" :loop="false" :autoWidth="false" :autoHeight="false" :nav="true" :center="false" :items="1" :dots="false" :navText="['','']" :rewind="false">
-                        <NewsMainItem :news="newsItem" :key="newsItem.Idx" v-for="newsItem in paginatorNews.data"/>
+                    <carousel v-if="paginatorNews && paginatorNews.data && paginatorNews.data.length > 0" class="slider_rel" :autoplay="false" :loop="false" :autoWidth="false" :autoHeight="false" :nav="true" :center="false" :items="1" :dots="false" :navText="['','']" :rewind="false">
+                        <NewsMainItem :news="newsItem" :key="newsItem.Idx" v-for="newsItem in paginatorNews.data" />
                     </carousel>
                 </div>
                 <div class="sec06_02">

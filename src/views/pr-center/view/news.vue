@@ -25,8 +25,9 @@
           </ul>
           <div class="board_pager">
               <div>
-                  <a href="javascript:void(0);">이전</a>
-                  <a href="javascript:void(0);">다음</a>
+                  <router-link :to="prevIdx > 0 ? `/news-list/news/${prevIdx}?nPage=${nPage}` : ''">이전</router-link>
+                  <!--<router-link v-if="prevIdx > 0" :to="`/news-list/news/${prevIdx}?nPage=${nPage}`">이전</router-link>-->
+                  <router-link :to="nextIdx > 0 ? `/news-list/news/${nextIdx}?nPage=${nPage}` : ''">다음</router-link>
               </div>
               <router-link :to="`/news-list/${this.nPage}`">목록</router-link>
           </div>
@@ -42,6 +43,8 @@ export default {
     return {
       news: {},
       showImage: true,
+      prevIdx: 0,
+      nextIdx: 0,
     }
   },
   computed: {
@@ -68,7 +71,12 @@ export default {
       return this.$route.query.nPage
     }
   },
-  beforeMount() {
+  watch: {
+    idx () {
+      this.getNews()
+    }
+  },
+  beforeMount () {
     this.getNews()
   },
   methods: {
@@ -79,7 +87,10 @@ export default {
       }
       await this.$axios.get(url, { params: params }).then(res => {
         if (res && res.data) {
+          // eslint-disable-next-line no-debugger
           this.news = res.data.data
+          this.prevIdx = res.data.prevIdx
+          this.nextIdx = res.data.nextIdx
         }
       })
     }
