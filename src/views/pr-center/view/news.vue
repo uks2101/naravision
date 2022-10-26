@@ -26,7 +26,7 @@
           <div class="board_pager">
               <div>
                   <router-link :to="prevIdx > 0 ? `/news-list/news/${prevIdx}?nPage=${nPage}` : ''">이전</router-link>
-                  <!--<router-link v-if="prevIdx > 0" :to="`/news-list/news/${prevIdx}?nPage=${nPage}`">이전</router-link>-->
+                  <!-- <router-link v-if="prevIdx > 0" :to="`/news-list/news/${prevIdx}?nPage=${nPage}`">이전</router-link> -->
                   <router-link :to="nextIdx > 0 ? `/news-list/news/${nextIdx}?nPage=${nPage}` : ''">다음</router-link>
               </div>
               <router-link :to="`/news-list/${this.nPage}`">목록</router-link>

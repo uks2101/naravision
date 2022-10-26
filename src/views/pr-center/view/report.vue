@@ -24,8 +24,8 @@
                 </ul>
                 <div class="board_pager">
                     <div>
-                        <a href="javascript:void(0);">이전</a>
-                        <a href="javascript:void(0);">다음</a>
+                        <router-link :to="prevIdx > 0 ? `/report-list/report/${prevIdx}?nPage=${nPage}` : ''">이전</router-link>
+                        <router-link :to="nextIdx > 0 ? `/report-list/report/${nextIdx}?nPage=${nPage}` : ''">다음</router-link>
                     </div>
                     <router-link :to="`/report-list/${this.nPage}`">목록</router-link>
                 </div>
@@ -40,7 +40,9 @@ export default {
   data () {
     return {
         report: {},
-        showImage: true
+        showImage: true,
+        prevIdx: 0,
+        nextIdx: 0
     }
   },
   computed: {
@@ -58,6 +60,11 @@ export default {
         return this.$route.query.nPage
     }
   },
+  watch: {
+    idx () {
+        this.getReport()
+    }
+  },
   beforeMount() {
     this.getReport()
   },
@@ -70,6 +77,8 @@ export default {
         await this.$axios.get(url, {params: params}).then(res => {
             if(res && res.data) {
                 this.report = res.data.data
+                this.prevIdx = res.data.prevIdx
+                this.nextIdx = res.data.nextIdx
             }
         })
     }
