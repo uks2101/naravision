@@ -25,9 +25,8 @@
           </ul>
           <div class="board_pager">
               <div>
-                  <router-link :to="prevIdx > 0 ? `/news-list/news/${prevIdx}?nPage=${nPage}` : ''">이전</router-link>
-                  <!-- <router-link v-if="prevIdx > 0" :to="`/news-list/news/${prevIdx}?nPage=${nPage}`">이전</router-link> -->
-                  <router-link :to="nextIdx > 0 ? `/news-list/news/${nextIdx}?nPage=${nPage}` : ''">다음</router-link>
+                  <router-link v-if="prevIdx > 0" :to="prevIdx > 0 ? `/news-list/news/${prevIdx}?nPage=${nPage}` : ''">이전</router-link>
+                  <router-link v-if="nextIdx > 0" :to="nextIdx > 0 ? `/news-list/news/${nextIdx}?nPage=${nPage}` : ''">다음</router-link>
               </div>
               <router-link :to="`/news-list/${this.nPage}`">목록</router-link>
           </div>
@@ -58,7 +57,6 @@ export default {
     },
     mainImage () {
       if (this.news.Idx) {
-        // eslint-disable-next-line no-debugger
         return this.api + '/image/' + this.news.Idx
       } else {
         return null
@@ -87,7 +85,7 @@ export default {
       }
       await this.$axios.get(url, { params: params }).then(res => {
         if (res && res.data) {
-          // eslint-disable-next-line no-debugger
+          this.showImage = true
           this.news = res.data.data
           this.prevIdx = res.data.prevIdx
           this.nextIdx = res.data.nextIdx

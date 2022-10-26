@@ -14,7 +14,7 @@
                         <ReportItem :key="reportItem.Idx" :report="reportItem" :n-page="paginator.nPage" />
                     </template>
                 </ul>
-                <Pager base-url="/report-list" :query="this.$route.query" :last-page="lastPage" :n-page="this.paginator.nPage" />
+                <Pager base-url="/report-list" :query="$route.query" :last-page="lastPage" :n-page="paginator.nPage" />
             </div>
         </section>
   </div>
@@ -27,14 +27,14 @@ export default {
     name: 'ReportListView',
     components: {Pager, ReportItem},
     data () {
-    return {
-        paginator: {
-            data: [],
-            count: 0,
-            nPage: this.$route.params.nPage || 1,
-        },
-        listNum: 10
-    }
+        return {
+            paginator: {
+                data: [],
+                count: 0,
+                nPage: this.$route.params.nPage || 1,
+            },
+            listNum: 10
+        }
     },
     computed: {
         lastPage() {

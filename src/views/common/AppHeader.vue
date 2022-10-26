@@ -34,18 +34,19 @@
                     <a href="javascript:void(0)">
                       {{ menu.title }}
                     </a>
-                    <img src="../../assets/images/gnb_arrow.png" alt="소메뉴 보기">
+                    <img src="../../assets/images/gnb_arrow.png" alt="소메뉴 보기" :class="{'on': isActive(menu)}">
                     <ul v-if="menu.subMenus && menu.subMenus.length > 0" :class="{ 'on': isActive(menu) }">
-                      <li
-                          v-for="(subMenu, j) in menu.subMenus"
-                          :key="'sub-menu-' + i + '-' + j"
-                          :class="{ 'onn': $route.path === subMenu.path || $route.path.indexOf(subMenu.name) >= 0 }"
-                      >
-                        <router-link :to="subMenu.path" class="sub-menu" :style="{ color: subMenu.color }">
-                          {{ subMenu.title }}
-                        </router-link>
-                      </li>
-                    </ul>
+                      <!-- <ul v-if="menu.subMenus && menu.subMenus.length > 0" :class="{ 'on': isActive(menu) }"> -->
+                        <li
+                            v-for="(subMenu, j) in menu.subMenus"
+                            :key="'sub-menu-' + i + '-' + j"
+                            :class="{ 'onn': $route.path === subMenu.path || $route.path.indexOf(subMenu.name) >= 0 }"
+                        >
+                          <router-link :to="subMenu.path" class="sub-menu" :style="{ color: subMenu.color }">
+                            {{ subMenu.title }}
+                          </router-link>
+                        </li>
+                      </ul>
                   </template>
                 </li>
             </ul>
@@ -250,8 +251,6 @@ export default {
       if (!active) {
         if (subMenus && subMenus.length > 0) {
           for (const subMenu of subMenus) {
-            console.log('main ' + menu.path)
-            console.log('sub ' + subMenu.path)
             if (path === subMenu.path || path.indexOf(subMenu.name) >= 0) {
               active = true
               break
@@ -290,4 +289,5 @@ export default {
     .right_gnb.on {right: 0;}
     .mobile_bg.on {display: block;}
     .gnb_arrow > ul.on {display: block;}
+
 </style>

@@ -24,8 +24,8 @@
                 </ul>
                 <div class="board_pager">
                     <div>
-                        <router-link :to="prevIdx > 0 ? `/report-list/report/${prevIdx}?nPage=${nPage}` : ''">이전</router-link>
-                        <router-link :to="nextIdx > 0 ? `/report-list/report/${nextIdx}?nPage=${nPage}` : ''">다음</router-link>
+                        <router-link v-if="prevIdx > 0" :to="prevIdx > 0 ? `/report-list/report/${prevIdx}?nPage=${nPage}` : ''">이전</router-link>
+                        <router-link v-if="nextIdx > 0" :to="nextIdx > 0 ? `/report-list/report/${nextIdx}?nPage=${nPage}` : ''">다음</router-link>
                     </div>
                     <router-link :to="`/report-list/${this.nPage}`">목록</router-link>
                 </div>
@@ -76,6 +76,7 @@ export default {
         }
         await this.$axios.get(url, {params: params}).then(res => {
             if(res && res.data) {
+                this.showImage = true
                 this.report = res.data.data
                 this.prevIdx = res.data.prevIdx
                 this.nextIdx = res.data.nextIdx
