@@ -36,7 +36,6 @@
                     </a>
                     <img src="../../assets/images/gnb_arrow.png" alt="소메뉴 보기" :class="{'on': isActive(menu)}">
                     <ul v-if="menu.subMenus && menu.subMenus.length > 0" :class="{ 'on': isActive(menu) }">
-                      <!-- <ul v-if="menu.subMenus && menu.subMenus.length > 0" :class="{ 'on': isActive(menu) }"> -->
                       <li v-for="(subMenu, j) in menu.subMenus" :key="'sub-menu-' + i + '-' + j"
                         :class="{ 'onn': $route.path === subMenu.path || $route.path.indexOf(subMenu.name) >= 0 }">
                         <router-link :to="subMenu.path" class="sub-menu" :style="{ color: subMenu.color }">
@@ -276,7 +275,6 @@ export default {
     },
     ...mapMutations('app', ['closeDrawer', 'openDrawer', 'openMenu', 'closeMenu']),
 
-
   }
 
 }
@@ -285,6 +283,6 @@ export default {
 <style scoped>
     .right_gnb.on {right: 0;}
     .mobile_bg.on {display: block;}
-    .gnb_arrow > ul.on {display: block;}
+    .gnb_arrow > ul.on {display: block; }
 
 </style>

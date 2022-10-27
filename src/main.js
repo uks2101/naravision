@@ -8,7 +8,6 @@ import { sync } from 'vuex-router-sync'
 require('../src/assets/css/common.css');
 require('../src/assets/css/style.css');
 require('../src/assets/css/notosanskr.css');
-require('../src/assets/css/jquery.bxslider.css');
 
 
 const apiUrl = 'https://api.nara.co.kr/homepage'
