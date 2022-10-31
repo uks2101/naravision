@@ -80,7 +80,7 @@
                             <p>스마트워크를 위한 솔루션</p>
                         </div>
                     </router-link>
-                    <router-link to="/" >
+                    <router-link to="/" onclick="alert('페이지 준비 중입니다.')">
                         <div>
                             <h3>메신저</h3>
                             <p>업무용 메신저의 완성</p>
